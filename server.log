@@ -78,3 +78,6 @@ Please check https://github.com/gin-gonic/gin/blob/master/docs/doc.md#dont-trust
 2025/12/24 17:41:05 Logging initialized to ./server.log (Retention: 7 days)
 2025/12/24 17:41:05 Snapshot cleanup task is disabled
 2025/12/24 17:41:05 Checking for old log files to clean up...
+2025/12/24 18:41:05 Checking for old log files to clean up...
+2025/12/24 18:49:11 Logging initialized to ./server.log (MaxSize: 100MB, Keep: 7 days, MaxBackups: 3)
+2025/12/24 18:49:11 Snapshot cleanup task is disabled

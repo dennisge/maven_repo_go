@@ -20,6 +20,8 @@ type Config struct {
 	SnapshotKeepLatestOnly  bool
 	LogPath                 string
 	LogKeepDays             int
+	LogMaxSize              int
+	LogMaxBackups           int
 }
 
 func New() *Config {
@@ -43,6 +45,8 @@ func New() *Config {
 		SnapshotKeepLatestOnly:  getEnv("MAVEN_SNAPSHOT_KEEP_LATEST_ONLY", "false") == "true",
 		LogPath:                 getEnv("MAVEN_LOG_PATH", "./server.log"),
 		LogKeepDays:             getEnvInt("MAVEN_LOG_KEEP_DAYS", 7),
+		LogMaxSize:              getEnvInt("MAVEN_LOG_MAX_SIZE", 100), // MB
+		LogMaxBackups:           getEnvInt("MAVEN_LOG_MAX_BACKUPS", 3),
 	}
 }
 
