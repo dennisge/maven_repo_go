@@ -1,0 +1,26 @@
+# Binaries
+bin/
+release/
+maven_server
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Artifacts storage
+artifacts/
+
+# Local configuration/secrets
+users.txt
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+server.log
+server.out

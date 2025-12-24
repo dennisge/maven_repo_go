@@ -1,0 +1,80 @@
+[Fx] PROVIDE	fx.Lifecycle <= go.uber.org/fx.New.func1()
+[Fx] PROVIDE	fx.Shutdowner <= go.uber.org/fx.(*App).shutdowner-fm()
+[Fx] PROVIDE	fx.DotGraph <= go.uber.org/fx.(*App).dotGraph-fm()
+[Fx] PROVIDE	*config.Config <= maven_repo/config.New()
+[Fx] PROVIDE	storage.StorageProvider <= maven_repo/server.init.func1()
+[Fx] PROVIDE	*handler.MavenHandler <= maven_repo/server.init.func2()
+[Fx] PROVIDE	*service.SnapshotCleanupService <= maven_repo/service.NewSnapshotCleanupService()
+[Fx] PROVIDE	*handler.AdminHandler <= maven_repo/handler.NewAdminHandler()
+[Fx] PROVIDE	*gin.Engine <= maven_repo/server.NewGinEngine()
+[Fx] INVOKE		maven_repo/server.StartHTTPServer()
+[Fx] BEFORE RUN	provide: go.uber.org/fx.New.func1()
+[Fx] RUN	provide: go.uber.org/fx.New.func1() in 6.458µs
+[Fx] BEFORE RUN	provide: maven_repo/config.New()
+[Fx] RUN	provide: maven_repo/config.New() in 4.208µs
+[Fx] BEFORE RUN	provide: maven_repo/server.init.func1()
+[Fx] RUN	provide: maven_repo/server.init.func1() in 3µs
+[Fx] BEFORE RUN	provide: maven_repo/server.init.func2()
+[Fx] RUN	provide: maven_repo/server.init.func2() in 2.542µs
+[Fx] BEFORE RUN	provide: maven_repo/service.NewSnapshotCleanupService()
+[Fx] RUN	provide: maven_repo/service.NewSnapshotCleanupService() in 1.875µs
+[Fx] BEFORE RUN	provide: maven_repo/handler.NewAdminHandler()
+[Fx] RUN	provide: maven_repo/handler.NewAdminHandler() in 4.25µs
+[Fx] BEFORE RUN	provide: maven_repo/server.NewGinEngine()
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] PUT    /public/*path             --> maven_repo/handler.(*MavenHandler).HandleUpload-fm (4 handlers)
+[GIN-debug] GET    /public/*path             --> maven_repo/handler.(*MavenHandler).HandleDownload-fm (4 handlers)
+[GIN-debug] HEAD   /public/*path             --> maven_repo/handler.(*MavenHandler).HandleHead-fm (4 handlers)
+[GIN-debug] PUT    /repository/:repoName/*path --> maven_repo/handler.(*MavenHandler).HandleUpload-fm (4 handlers)
+[GIN-debug] GET    /repository/:repoName/*path --> maven_repo/handler.(*MavenHandler).HandleDownload-fm (4 handlers)
+[GIN-debug] HEAD   /repository/:repoName/*path --> maven_repo/handler.(*MavenHandler).HandleHead-fm (4 handlers)
+[GIN-debug] POST   /admin/snapshots/cleanup/pause --> maven_repo/handler.(*AdminHandler).PauseCleanup-fm (4 handlers)
+[GIN-debug] POST   /admin/snapshots/cleanup/resume --> maven_repo/handler.(*AdminHandler).ResumeCleanup-fm (4 handlers)
+[GIN-debug] GET    /admin/snapshots/cleanup/status --> maven_repo/handler.(*AdminHandler).CleanupStatus-fm (4 handlers)
+[GIN-debug] POST   /admin/snapshots/cleanup/trigger --> maven_repo/handler.(*AdminHandler).TriggerCleanup-fm (4 handlers)
+[Fx] RUN	provide: maven_repo/server.NewGinEngine() in 51.209µs
+[Fx] INVOKE		maven_repo/server.StartCleanupService()
+[Fx] HOOK OnStart		maven_repo/server.StartHTTPServer.func1() executing (caller: maven_repo/server.StartHTTPServer)
+[Fx] HOOK OnStart		maven_repo/server.StartHTTPServer.func1() called by maven_repo/server.StartHTTPServer ran successfully in 1.833µs
+[Fx] HOOK OnStart		maven_repo/server.StartCleanupService.func1() executing (caller: maven_repo/server.StartCleanupService)
+[Fx] HOOK OnStart		maven_repo/server.StartCleanupService.func1() called by maven_repo/server.StartCleanupService ran successfully in 4.292µs
+[Fx] RUNNING
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://github.com/gin-gonic/gin/blob/master/docs/doc.md#dont-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+2025/12/20 18:02:44 Starting snapshot cleanup...
+2025/12/20 18:02:44 Snapshot cleanup finished.
+2025/12/20 18:02:54 Starting snapshot cleanup...
+2025/12/20 18:02:54 Snapshot cleanup finished.
+2025/12/20 18:03:04 Starting snapshot cleanup...
+2025/12/20 18:03:04 Snapshot cleanup finished.
+2025/12/20 18:03:14 Starting snapshot cleanup...
+2025/12/20 18:03:14 Snapshot cleanup finished.
+2025/12/20 18:03:24 Starting snapshot cleanup...
+2025/12/20 18:03:24 Snapshot cleanup finished.
+2025/12/20 18:03:34 Starting snapshot cleanup...
+2025/12/20 18:03:34 Snapshot cleanup finished.
+2025/12/20 18:03:44 Starting snapshot cleanup...
+2025/12/20 18:03:44 Snapshot cleanup finished.
+2025/12/20 18:03:54 Starting snapshot cleanup...
+2025/12/20 18:03:54 Snapshot cleanup finished.
+2025/12/24 17:23:53 Logging initialized to ./server.log (Retention: 7 days)
+2025/12/24 17:23:53 Snapshot cleanup task is disabled
+2025/12/24 17:23:53 Checking for old log files to clean up...
+2025/12/24 17:28:45 Logging initialized to ./server.log (Retention: 7 days)
+2025/12/24 17:28:45 Snapshot cleanup task is disabled
+2025/12/24 17:28:45 Checking for old log files to clean up...
+2025/12/24 17:32:07 Logging initialized to ./server.log (Retention: 7 days)
+2025/12/24 17:32:07 Snapshot cleanup task is disabled
+2025/12/24 17:32:07 Checking for old log files to clean up...
+2025/12/24 17:37:26 Logging initialized to ./server.log (Retention: 7 days)
+2025/12/24 17:37:26 Snapshot cleanup task is disabled
+2025/12/24 17:37:26 Checking for old log files to clean up...
+2025/12/24 17:41:05 Logging initialized to ./server.log (Retention: 7 days)
+2025/12/24 17:41:05 Snapshot cleanup task is disabled
+2025/12/24 17:41:05 Checking for old log files to clean up...
